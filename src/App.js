@@ -1,25 +1,39 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import Login from './Components/Login/Login';
+import Chat from './Components/Chat/Chat';
+import PrivateRoute from './Components/PrivateRoute';
+import { FirebaseAuth } from './Firebase';
+import { setUser, addUser, fetchMessages } from './Redux/ActionCreator';
 import './App.css';
 
-function App() {
+const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const unsubscribe = FirebaseAuth.onAuthStateChanged((user) => {
+      dispatch(setUser(user))
+      if (user) {
+        addUser(user).then(() => dispatch(fetchMessages(user)))
+      }
+    })
+    return unsubscribe;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Switch>
+      <Route path="/login" exact>
+        <Login />
+      </Route>
+      <PrivateRoute path="/">
+        <Chat />
+      </PrivateRoute>
+      <Route>
+        <Redirect to="/" />
+      </Route>
+    </Switch>
+  )
 }
 
 export default App;

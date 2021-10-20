@@ -1,0 +1,11 @@
+.sidebar-body-container{
+    background-color: #fff;
+}
+
+.sidebar-body-container .no-message{
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    color: rgb(180, 180, 180);
+    text-align: center;
+}

@@ -1,0 +1,9 @@
+.sidebar-container {
+    background-color: rgb(255, 255, 255);
+}
+
+@media (min-width: 768px) {
+    .sidebar-container {
+        flex: 0.35 !important;
+    }
+}

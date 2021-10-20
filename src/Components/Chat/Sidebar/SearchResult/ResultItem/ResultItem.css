@@ -1,0 +1,29 @@
+.chatitem-container{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-bottom: 1px solid rgb(236, 236, 236);
+    cursor: pointer;
+    padding: 10px;
+}
+
+.chatitem-container:hover{
+    background-color: rgba(245, 245, 245, 0.794);
+    transition: transform all;
+}
+
+.chatitem-container img{
+    width: 50px;
+    margin-right: 10px;
+    border-radius: 30px;
+}
+
+.chatitem-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.chatitem-text p:nth-child(2){
+    font-weight: 200;
+}
