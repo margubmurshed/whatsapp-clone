@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { Redirect, useLocation } from 'react-router-dom';
 
 const Login = () => {
+    console.log("IN the login page")
     const [loading, setLoading] = useState(false);
     const user = useSelector(({ user }) => user);
     const { location } = (useLocation().state || { location: '/' });

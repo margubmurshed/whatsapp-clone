@@ -37,37 +37,6 @@ export const fetchMessages = (user) => {
     }
 }
 
-export const fetchUsers = () => {
-    return dispatch => {
-        FirebaseDB.collection("users").onSnapshot(snapshot => {
-            const users = [];
-            snapshot.forEach(doc => {
-                users.push({
-                    id: doc.id,
-                    ...doc.data()
-                })
-            })
-            dispatch({
-                type: ActionTypes.fetchUsers,
-                payload: users
-            })
-        })
-    }
-}
-
-export const searchusers = email => {
-    return {
-        type: ActionTypes.searchUsers,
-        payload: email
-    }
-}
-
-export const clearSearch = () => {
-    return {
-        type: ActionTypes.clearSearch
-    }
-}
-
 export const setActiveRoomID = roomid => {
     return {
         type: ActionTypes.setActiveRoomID,

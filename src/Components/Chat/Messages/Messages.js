@@ -16,7 +16,6 @@ const Messages = () => {
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        document.title = "Message | WhatsApp"
         const getUser = async uid => {
             const doc = await FirebaseDB.collection("users").doc(uid).get();
             setUserData({

@@ -12,7 +12,6 @@ const SidebarResults = ({ searchText }) => {
             const snapshot = await FirebaseDB.collection("users").get();
             const array = [];
             snapshot.forEach(doc => {
-                console.log(doc.data().email.includes(searchText));
                 if (doc.data().email.includes(searchText)) {
                     array.push({
                         id: doc.id,
@@ -27,6 +26,9 @@ const SidebarResults = ({ searchText }) => {
 
     return (
         <div className="sidebar-body-container">
+            <div className="p-5">
+                <h3 className="text-xl font-medium">Search Results for "{searchText}"</h3>
+            </div>
             {foundUsers ? foundUsers.map(user => (
                 <Link to={`/chats/${user.id}`} key={user.id}>
                     <ResultItem user={user} />

@@ -18,7 +18,8 @@ const ChatItem = ({ uid }) => {
             setphotoURL(photoURL);
         }
         getUserInformation()
-    }, [uid]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const chatItemMessages = messages.length ? messages.filter(({ sender, receiver }) => {
         if (user.uid === uid) return sender === receiver;
